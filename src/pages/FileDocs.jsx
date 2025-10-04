@@ -94,7 +94,7 @@ const FolderModal = ({ isOpen, onClose, onSubmit, folder = null, isLoading = fal
 const SubFolderModal = ({ isOpen, onClose, onSubmit, subfolder = null, folderId, isLoading = false }) => {
   const [formData, setFormData] = useState({
     name: subfolder?.name || '',
-    folder: folderId || subfolder?.folder?.id || ''
+    folder: folderId || subfolder?.folder || ''
   });
 
   const handleSubmit = (e) => {
@@ -258,13 +258,13 @@ const FileDocs = () => {
   const { data: folderContents, isLoading: folderLoading } = useQuery({
     queryKey: ['folder-contents', currentFolder?.id],
     queryFn: () => fileDocsAPI.getFolderContents(currentFolder.id),
-    enabled: currentView === 'folder' && currentFolder,
+    enabled: currentView === 'folder' && !!currentFolder,
   });
 
   const { data: subfolderContents, isLoading: subfolderLoading } = useQuery({
     queryKey: ['subfolder-contents', currentSubfolder?.id],
     queryFn: () => fileDocsAPI.getSubfolderContents(currentSubfolder.id),
-    enabled: currentView === 'subfolder' && currentSubfolder,
+    enabled: currentView === 'subfolder' && !!currentSubfolder,
   });
 
   // Mutations
@@ -301,7 +301,11 @@ const FileDocs = () => {
       setIsFileModalOpen(false);
     },
     onError: (error) => {
-      toast.error(error.response?.data?.message || 'Failed to upload file');
+      console.error('File upload error:', error.response?.data);
+      const errorMessage = error.response?.data?.message || 
+                          JSON.stringify(error.response?.data) || 
+                          'Failed to upload file';
+      toast.error(errorMessage);
     },
   });
 

@@ -56,6 +56,8 @@ const ProtectedRoute = ({ children }) => {
 const AdminRoute = ({ children }) => {
   const { user, isAuthenticated, isLoading } = useAuth();
 
+  console.log('AdminRoute Check:', { isLoading, isAuthenticated, user });
+
   if (isLoading) {
     return <LoadingSpinner />;
   }
@@ -122,7 +124,7 @@ function AppRoutes() {
         <Route path="projects" element={<AdminRoute><Projects /></AdminRoute>} />
         <Route path="quotations" element={<AdminRoute><Quotations /></AdminRoute>} />
         <Route path="users" element={<AdminRoute><Users /></AdminRoute>} />
-        <Route path="admin-attendance" element={<AdminRoute><AttendancePage /></AdminRoute>} />
+        <Route path="admin-attendance" element={<AdminRoute><AdminAttendance /></AdminRoute>} />
         <Route path="roles" element={<AdminRoute><Roles /></AdminRoute>} />
         <Route path="payments" element={<AdminRoute><Payments /></AdminRoute>} />
         <Route path="hosting" element={<AdminRoute><Hosting /></AdminRoute>} />

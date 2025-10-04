@@ -158,6 +158,8 @@ export const attendanceAPI = {
   getAdminDetails: (userId, date) => api.get(`/admin-attendance/${date}/${userId}/`),
   getMonthlyOverview: () => api.get("attendance/monthly-overview/"),
   getUsers: () => api.get("users/"),
+  getAdminSummary: (date) => api.get('/attendance/admin-summary/', { params: { date } }),
+  getAdminReport: (params) => api.get('/attendance/admin-report/', { params }),
 };
 
 // Admin can use the same endpoints as regular attendance

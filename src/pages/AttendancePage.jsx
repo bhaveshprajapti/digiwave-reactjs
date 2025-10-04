@@ -39,7 +39,7 @@ const AttendancePage = () => {
   });
 
   const chartData = useMemo(() => {
-    if (!monthlyOverviewData) return [];
+    if (!monthlyOverviewData || !Array.isArray(monthlyOverviewData)) return [];
     return monthlyOverviewData.map(item => ({
       date: new Date(item.date).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
       present: item.present,
@@ -48,10 +48,10 @@ const AttendancePage = () => {
   }, [monthlyOverviewData]);
 
   const filteredDailyLog = useMemo(() => {
-    if (!attendanceData) return [];
+    if (!attendanceData || !attendanceData.results) return [];
     let logs = attendanceData.results || [];
     if (selectedEmployee !== "all") {
-      logs = logs.filter(log => log.user.id === parseInt(selectedEmployee));
+      logs = logs.filter(log => log.user && log.user.id === parseInt(selectedEmployee));
     }
     return logs;
   }, [attendanceData, selectedEmployee]);
@@ -60,7 +60,7 @@ const AttendancePage = () => {
     return <LoadingSpinner />;
   }
 
-  const totalEmployees = usersData?.count || 0;
+  const totalEmployees = (usersData?.count && typeof usersData.count === 'number') ? usersData.count : 0;
   const presentToday = statsData?.present_today || 0;
   const onLeaveToday = statsData?.on_leave_today || 0;
 
@@ -145,11 +145,11 @@ const AttendancePage = () => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Employees</SelectItem>
-                  {usersData?.results.map(employee => (
+                  {usersData?.results && Array.isArray(usersData.results) ? usersData.results.map(employee => (
                     <SelectItem key={employee.id} value={employee.id.toString()}>
                       {employee.first_name} {employee.last_name}
                     </SelectItem>
-                  ))}
+                  )) : []}
                 </SelectContent>
               </Select>
             </div>
