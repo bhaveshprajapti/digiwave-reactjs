@@ -1,0 +1,162 @@
+/* SweetAlert2 Custom Styles for DigiWave */
+
+/* Popup container */
+.swal2-popup-digiwave {
+  border-radius: 0.75rem !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+/* Title styling */
+.swal2-title-digiwave {
+  color: #1f2937 !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Content styling */
+.swal2-content-digiwave {
+  color: #6b7280 !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+}
+
+/* Confirm button styling */
+.swal2-confirm-digiwave {
+  background-color: #6366f1 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 0.5rem !important;
+  padding: 0.5rem 1.5rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease-in-out !important;
+  margin: 0 0.25rem !important;
+}
+
+.swal2-confirm-digiwave:hover {
+  background-color: #4f46e5 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+.swal2-confirm-digiwave:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3) !important;
+}
+
+/* Cancel button styling */
+.swal2-cancel-digiwave {
+  background-color: white !important;
+  color: #6b7280 !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 0.5rem !important;
+  padding: 0.5rem 1.5rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease-in-out !important;
+  margin: 0 0.25rem !important;
+}
+
+.swal2-cancel-digiwave:hover {
+  background-color: #f9fafb !important;
+  border-color: #9ca3af !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+.swal2-cancel-digiwave:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.3) !important;
+}
+
+/* Icon styling */
+.swal2-icon.swal2-warning {
+  border-color: #f59e0b !important;
+  color: #f59e0b !important;
+}
+
+.swal2-icon.swal2-success {
+  border-color: #10b981 !important;
+  color: #10b981 !important;
+}
+
+.swal2-icon.swal2-error {
+  border-color: #ef4444 !important;
+  color: #ef4444 !important;
+}
+
+.swal2-icon.swal2-info {
+  border-color: #3b82f6 !important;
+  color: #3b82f6 !important;
+}
+
+.swal2-icon.swal2-question {
+  border-color: #6366f1 !important;
+  color: #6366f1 !important;
+}
+
+/* Actions container */
+.swal2-actions {
+  margin-top: 1.5rem !important;
+  gap: 0.5rem !important;
+}
+
+/* Backdrop */
+.swal2-backdrop-show {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Animation improvements */
+.swal2-show {
+  animation: swal2-show-digiwave 0.3s ease-out !important;
+}
+
+.swal2-hide {
+  animation: swal2-hide-digiwave 0.15s ease-in !important;
+}
+
+@keyframes swal2-show-digiwave {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes swal2-hide-digiwave {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-20px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .swal2-popup-digiwave {
+    margin: 1rem !important;
+    max-width: calc(100% - 2rem) !important;
+  }
+  
+  .swal2-title-digiwave {
+    font-size: 1.125rem !important;
+  }
+  
+  .swal2-content-digiwave {
+    font-size: 0.8125rem !important;
+  }
+  
+  .swal2-confirm-digiwave,
+  .swal2-cancel-digiwave {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.8125rem !important;
+  }
+}
